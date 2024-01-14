@@ -1,9 +1,17 @@
+import clsx from "clsx";
 import { Card } from "./card";
 
 export function PostPreview() {
   return (
-    <Card className="p-4 flex gap-4 w-full">
-      <img src="/avatar.webp" alt="" className="w-72 h-36 rounded-sm overflow-hidden shrink-0 object-cover object-center" />
+    <Card className="flex-col lg:flex-row p-4 flex gap-4 w-full">
+      <img
+        src="/avatar.webp"
+        alt=""
+        className={clsx(
+          "w-full aspect-[3/1] rounded-sm overflow-hidden shrink-0 object-cover object-center",
+          "lg:w-72 lg:h-36 "
+        )}
+      />
       <div className="flex flex-col gap-2">
         <div className="text-xl text-neutral-100 truncate">
           <span>前端博客建设指南</span>
