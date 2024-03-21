@@ -49,7 +49,7 @@ export default async function Layout(props: PropsWithChildren<Props>) {
         updated at {dayjs(article.updatedAt).format("YYYY/MM/DD HH:mm")}
       </div>
       <div className="h-32"></div>
-      {process.env.NODE_ENV === "development" ? <Metadata article={article} /> : null}
+      {isDev ? <Metadata article={article} /> : null}
     </>
   );
 }
