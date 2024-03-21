@@ -29,7 +29,7 @@ async function run() {
         visible: false,
         OR: [
           {
-            name: "draft",
+            name: "Draft",
           },
         ],
       },
