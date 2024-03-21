@@ -38,7 +38,7 @@ async function run() {
       draft = await prisma.category.create({
         data: {
           visible: false,
-          name: "draft",
+          name: "Draft",
         },
       });
     }
