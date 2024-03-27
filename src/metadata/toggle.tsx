@@ -10,14 +10,15 @@ type Props = {
 
 export function Toggle(props: Props) {
   const [checked, setChecked] = useState(props.defaultChecked);
+  const handleChange = () => {
+    setChecked(old => !old);
+  };
   return (
     <>
-      <input type="checkbox" className="hidden" name={props.name} id={props.id} checked={checked} />
+      <input type="checkbox" onChange={handleChange} className="hidden" name={props.name} id={props.id} checked={checked} />
       <label
         htmlFor={props.id}
-        onClick={() => {
-          setChecked(old => !old);
-        }}
+        onClick={handleChange}
         className={clsx(
           "cursor-pointer flex items-center justify-center w-[2.625em] h-[1.25em] rounded-full overflow-hidden text-size-16",
           !checked ? "bg-primary bg-opacity-[0.1]" : "bg-primary"

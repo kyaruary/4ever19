@@ -17,18 +17,23 @@ export function TagSelect(props: Props) {
     <div className="flex items-center gap-8 flex-wrap text-14">
       {props.tags.map(tag => {
         const checked = selected.some(each => each.id === tag.id);
+        const handleChange = () => {
+          if (checked) {
+            setSelected(old => old.filter(item => item.id !== tag.id));
+          } else {
+            setSelected(old => old.concat(tag));
+          }
+        };
         return (
-          <div
-            key={tag.id}
-            onClick={() => {
-              if (checked) {
-                setSelected(old => old.filter(item => item.id !== tag.id));
-              } else {
-                setSelected(old => old.concat(tag));
-              }
-            }}
-          >
-            <input name={props.name} value={tag.id} className="hidden" type="checkbox" checked={checked} />
+          <div key={tag.id} onClick={handleChange}>
+            <input
+              name={props.name}
+              onChange={handleChange}
+              value={tag.id}
+              className="hidden"
+              type="checkbox"
+              checked={checked}
+            />
             <label className={clsx("cursor-pointer", checked ? "text-n-5" : "text-n-4 italic  hover:text-n-5")}>
               #{tag.name}
             </label>

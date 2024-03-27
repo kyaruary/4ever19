@@ -6,6 +6,7 @@ import { FormItem } from "./form-item";
 import { Toggle } from "./toggle";
 import { updateMetadata } from "./action";
 import { TagSelect } from "./tag-select";
+import { Upload } from "./upload";
 
 type Props = {
   article: ArticlePreview;
@@ -53,9 +54,7 @@ export async function Metadata(props: Props) {
         <FormItem label="Tags">
           <TagSelect name="tags" tags={tags} defaultValue={article.tags.map(each => each.tag)} />
         </FormItem>
-        <FormItem label="Cover">
-          <input type="file" name="cover" />
-        </FormItem>
+        <Upload url={article.cover} />
 
         <button type="submit" className="bg-primary-3 rounded-6 h-40 hover:bg-primary-2">
           Submit
