@@ -1,5 +1,6 @@
 import { promises as fs } from "fs";
-import { prisma } from "../src/database";
+import { prisma } from "../database";
+
 async function run() {
   const slug = process.argv[2];
   try {

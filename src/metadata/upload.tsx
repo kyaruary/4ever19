@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { FormItem } from "./form-item";
+import { config } from "@/config";
 
 type Props = {
   url?: string | null;
@@ -15,7 +16,7 @@ export function Upload(props: Props) {
     if (!file && !props.url) {
       return (
         <Image
-          src={"/covers/default.webp"}
+          src={config.cover}
           className="w-[20rem] h-[11.25rem] rounded-8 overflow-hidden object-cover cursor-pointer"
           width={320}
           height={180}
@@ -74,7 +75,7 @@ export function Upload(props: Props) {
           type="file"
           name="cover"
           className="hidden"
-          accept="image/png, image/jpeg"
+          accept="image/png, image/jpeg, image/webp, image/gif"
           onChange={e => {
             const file = e.target.files?.[0];
             console.log(file);

@@ -20,11 +20,15 @@ export async function updateMetadata(article: ArticlePreview, fd: FormData) {
     published,
   };
 
-  if (file) {
+  if (file && file.size > 0 && file.name !== "undefined") {
     const data = await file.arrayBuffer();
     const cover = `/covers/${file.name}`;
     const folder = `${process.cwd()}/public`;
-    await fs.appendFile(`${folder}${cover}`, Buffer.from(data));
+    const path = `${folder}${cover}`;
+    const stat = await fs.stat(path).catch(() => {});
+    if (!stat) {
+      await fs.appendFile(path, Buffer.from(data));
+    }
     updateData.cover = cover;
   }
 

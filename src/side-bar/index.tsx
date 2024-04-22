@@ -2,6 +2,7 @@ import { prisma } from "../database";
 import { Card } from "@/card";
 import { ClassifyMenu } from "./menu";
 import { Navigation } from "./navigation";
+import { config } from "@/config";
 
 type Props = {
   categoryCount: number;
@@ -15,12 +16,12 @@ export async function SideBar(props: Props) {
     <div className="flex flex-col gap-16 h-full">
       <Card className="p-16 flex items-center flex-col gap-16">
         <img
-          src="/avatar.webp"
-          alt=""
+          src={config.avatar}
+          alt="avatar"
           className="w-[6rem] h-[6rem] rounded-full overflow-hidden border-white border-4 shrink-0"
         />
-        <div className="text-22 italic">ary@blog</div>
-        <div className="text-14 text-n-4 text-center">All beginnings are hard</div>
+        <div className="text-22 italic">{config.name}</div>
+        <div className="text-14 text-n-4 text-center">{config.motto}</div>
       </Card>
       <Card className="p-16 flex items-center gap-8">
         <ClassifyMenu href="/archives" count={articleCount} name="Archives" />

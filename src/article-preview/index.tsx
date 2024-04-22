@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import { Category } from "@/category";
 import { Tag } from "@/tag";
 import { ArticlePreview } from "@/types";
+import { config } from "@/config";
 
 type Props = {
   article: ArticlePreview;
@@ -17,7 +18,7 @@ export function Preview(props: Props) {
     <Card className="flex-col lg:flex-row p-16 flex gap-16 w-full group">
       <div className="relative rounded-8 overflow-hidden shrink-0">
         <img
-          src={article.cover || "/covers/default.webp"}
+          src={article.cover || config.cover}
           alt="cover"
           className={clsx("w-full aspect-[3/1] object-cover object-center", "lg:w-[18rem] lg:h-[9rem] ")}
         />

@@ -57,7 +57,7 @@ export async function Metadata(props: Props) {
         <Upload url={article.cover} />
 
         <button type="submit" className="bg-primary-3 rounded-6 h-40 hover:bg-primary-2">
-          Submit
+          Update
         </button>
       </form>
     </Card>

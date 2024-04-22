@@ -8,7 +8,7 @@
     "build": "prisma generate && prisma migrate deploy && next build",
     "start": "next start",
     "lint": "next lint",
-    "create": "ts-node scripts/create.ts"
+    "create": "ts-node src/scripts/create.ts"
   },
   "keywords": [],
   "author": "",
