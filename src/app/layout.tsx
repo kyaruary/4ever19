@@ -7,6 +7,16 @@ import clsx from "clsx";
 import { PropsWithChildren } from "react";
 import { RootLayout } from "@/layouts/root";
 import "./global.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Kyaru@blog",
+    startupImage: "/logo.svg",
+  },
+};
 
 export default async function Layout(props: PropsWithChildren<unknown>) {
   const [categoryCount, tagCount, articleCount] = await Promise.all([
