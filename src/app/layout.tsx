@@ -5,10 +5,10 @@ import { prisma } from "@/database";
 import { isDev } from "@/config";
 import clsx from "clsx";
 import { PropsWithChildren } from "react";
-
+import { RootLayout } from "@/layouts/root";
 import "./global.css";
 
-export default async function RootLayout(props: PropsWithChildren<unknown>) {
+export default async function Layout(props: PropsWithChildren<unknown>) {
   const [categoryCount, tagCount, articleCount] = await Promise.all([
     prisma.category.count({
       where: isDev
@@ -26,16 +26,13 @@ export default async function RootLayout(props: PropsWithChildren<unknown>) {
           },
     }),
   ]);
+
   return (
     <html lang="zh-CN" className="text-16 h-full bg-n-1 text-n-5 2xl:text-[1vw]">
       <body className="h-full m-0 text-14">
-        <div className={clsx("hidden md:block float-left sticky top-0 pr-0 p-24 h-full w-[18rem]")}>
-          <SideBar categoryCount={categoryCount} tagCount={tagCount} articleCount={articleCount} />
-        </div>
-        <div className="h-full overflow-auto px-24 pt-24">{props.children}</div>
-        <FloatAction>
-          <SideBar categoryCount={categoryCount} tagCount={tagCount} articleCount={articleCount} />
-        </FloatAction>
+        <RootLayout menu={<SideBar categoryCount={categoryCount} tagCount={tagCount} articleCount={articleCount} />}>
+          {props.children}
+        </RootLayout>
         <Analytics />
       </body>
     </html>

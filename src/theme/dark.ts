@@ -1,5 +1,7 @@
 export const dark = {
+  inherit: "inherit",
   transparent: "transparent",
+  current: "currentColor",
   black: {
     DEFAULT: "#000",
   },
