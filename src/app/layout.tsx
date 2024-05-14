@@ -12,7 +12,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "default",
     title: "Kyaru@blog",
     startupImage: "/logo.svg",
   },

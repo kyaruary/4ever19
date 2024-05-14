@@ -9,6 +9,20 @@ const nextConfig = {
   images: {
     loaderFile: "./image-loader/index.js",
   },
+  headers: async () => {
+    return [
+      {
+        source: "/covers/:cover",
+        basePath: false,
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "max-age=2592000",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 const withMDX = createMDX({
